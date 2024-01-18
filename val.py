@@ -53,6 +53,7 @@ def test_model(model, valloader, save_dir,i_iter,gpu,usecuda,test_aug):
     total_dice = 0
     total_jac = 0
     count = 0
+    pred_total = np.array([])
     for i_pic, (images_v, masks_v, original_msk,_,name)in enumerate(valloader):
         if usecuda:
             stacked_img = torch.Tensor([]).cuda(gpu)

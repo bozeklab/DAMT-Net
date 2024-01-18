@@ -23,8 +23,8 @@ DATA_DIRECTORY_VAL_LABEL = '../data/cvlabdata/val/lab/'
 DATA_LIST_PATH_VAL = './dataset/cvlabdata_list/val.txt'
 
 # target validation
-DATA_DIRECTORY_TEST = '../data/cvlabdata/test/img/'
-DATA_DIRECTORY_TEST_LABEL = '../data/cvlabdata/test/lab/'
+DATA_DIRECTORY_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/test'
+DATA_DIRECTORY_TEST_LABEL = '/projects/ag-bozek/psotnicz/DAMT-Net/data/ground_truth'
 DATA_LIST_PATH_TEST = './dataset/cvlabdata_list/test.txt'
 
 # model setting
@@ -53,7 +53,7 @@ SAVE_NUM_IMAGES = 2
 SAVE_PRED_EVERY = 300
 SNAPSHOT_DIR = './snapshots/'
 SAVE_DIR = './testResult/'
-TEST_MODEL_PATH = './snapshots/CV_300.pth'
+TEST_MODEL_PATH = '/projects/ag-bozek/psotnicz/DAMT-Net/Pretrained_model/model_final_iii_vnc_to_mouse_brain1.pth'
 
 LAMBDA_ADV_LABEL = 0.001
 LAMBDA_ADV_FEATURE = 0.001

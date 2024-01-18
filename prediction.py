@@ -69,7 +69,7 @@ def prediction():
     print('final 3D dice: %4f' % final3_dice, 'final 3D jac: %4f' % final3_jac,
           'final 2D dice: %4f' % (final2_dice / (pics)), 'final 2D jac: %4f' % (final2_jac / (pics)))
 
-    pred_final = postpre(pred_final, args.savedir,5)
+    pred_final = postpre(pred_final, args.save_dir,5)
 
     final3_dice,final3_jac = dice_coeff(pred_final,msk_final)
     final2_dice = 0
@@ -85,7 +85,7 @@ def prediction():
     print('final 3D dice: %4f' % final3_dice, 'final 3D jac: %4f' % final3_jac,
           'final 2D dice: %4f' % (final2_dice / (pics)), 'final 2D jac: %4f' % (final2_jac / (pics)))
 
-    desired_path = args.savedir + 'final_postpre'+'/'
+    desired_path = args.save_dir + 'final_postpre'+'/'
 
     if not os.path.exists(desired_path):
         os.makedirs(desired_path)

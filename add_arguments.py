@@ -143,7 +143,7 @@ def get_arguments():
                         help="How many images to save.")
     parser.add_argument("--save-pred-every", type=int, default=SAVE_PRED_EVERY,
                         help="Save checkpoint every often.")
-    parser.add_argument("--save-dir", type=str, default=SAVE_DIR,
+    parser.add_argument("--save_dir", type=str, default=SAVE_DIR,
                         help="Save dir.")
     parser.add_argument("--snapshot-dir", type=str, default=SNAPSHOT_DIR,
                         help="Where to save snapshots of the model.")

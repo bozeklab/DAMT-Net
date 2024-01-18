@@ -21,7 +21,7 @@ def test_augmentation(testmodel, pred_ori, input_size_target, args, usecuda):
                               test_aug, crop_size=input_size_target),
             batch_size=1, shuffle=False)
 
-        pred_total, original_msk_total = test_model(testmodel, testloader, args.save_dir, args.gpu, usecuda,
+        pred_total, original_msk_total = test_model(testmodel, testloader, args.save_dir, test_aug, args.gpu, usecuda,
                                                         test_aug)
 
         pred_total = postpre(pred_total, args.save_dir, test_aug)

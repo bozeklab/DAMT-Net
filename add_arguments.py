@@ -23,7 +23,7 @@ DATA_DIRECTORY_VAL_LABEL = '../data/cvlabdata/val/lab/'
 DATA_LIST_PATH_VAL = './dataset/cvlabdata_list/val.txt'
 
 # target validation
-DATA_DIRECTORY_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/test'
+DATA_DIRECTORY_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data'
 DATA_DIRECTORY_TEST_LABEL = '/projects/ag-bozek/psotnicz/DAMT-Net/data/ground_truth'
 DATA_LIST_PATH_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list.txt'
 
@@ -59,7 +59,7 @@ LAMBDA_ADV_LABEL = 0.001
 LAMBDA_ADV_FEATURE = 0.001
 LAMBDA_REC = 0.0005
 
-TEST_AUG = 4 # 1: original 4: original + different flips
+TEST_AUG = 1 # 1: original 4: original + different flips
 BEST_TJAC = 0.50
 FROZEN_LAYER = []  # 'Conv_down1', 'Conv_down2', 'Conv_down3','Conv_down4','Conv_down5', 'Conv_up1', 'Conv_up2','Conv_up3', 'Conv_up4'
 RANDOM_LAYER = []  # ,'Conv_out', 'Conv_out1','Conv_out2'

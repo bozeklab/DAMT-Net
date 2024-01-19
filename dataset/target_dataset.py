@@ -140,10 +140,9 @@ class targetDataSet_val(data.Dataset):
 
 
 class targetDataSet_test(data.Dataset):
-    def __init__(self, root_img, root_label, list_path, test_aug,crop_size=[512, 512],max_iters=None):
+    def __init__(self, root_img, list_path, test_aug,crop_size=[512, 512],max_iters=None):
 
         self.root_img = root_img
-        self.root_label = root_label
         self.list_path = list_path
         self.crop_size = crop_size
         self.test_aug = test_aug
@@ -154,10 +153,8 @@ class targetDataSet_test(data.Dataset):
 
         for name in self.img_ids:
             img_file = osp.join(self.root_img, name)
-            label_file = osp.join(self.root_label, name[:-4] + '.png')
             self.files.append({
                 "img": img_file,
-                "label": label_file,
                 "name": name
             })
 
@@ -171,23 +168,7 @@ class targetDataSet_test(data.Dataset):
         image = Image.open(datafiles["img"])
         image_as_np = np.asarray(image, np.float32)
 
-        label = Image.open(datafiles["label"])
         name = datafiles["name"]
-        label_as_img = np.asarray(label, np.float32)
-
-        if test_aug == 1:
-            image_as_np = cv2.flip(image_as_np, 1)
-            label_as_img = cv2.flip(label_as_img, 1)
-
-        if test_aug == 2:
-            image_as_np = cv2.flip(image_as_np, 0)
-            label_as_img = cv2.flip(label_as_img, 0)
-
-        if test_aug == 3:
-            image_as_np = cv2.flip(image_as_np, -1)
-            label_as_img = cv2.flip(label_as_img, -1)
-
-        original_label = torch.from_numpy(np.asarray(label_as_img) / 255)
 
         img_shape = image_as_np.shape
 
@@ -213,14 +194,7 @@ class targetDataSet_test(data.Dataset):
             processed_list.append(image_to_add)
 
         image_as_tensor = torch.Tensor(processed_list)
-
-        label_as_np = multi_cropping(label_as_img,
-                                     crop_size=self.crop_size[0],
-                                     crop_num1=crop_n1, crop_num2=crop_n2)
-        label_as_np = label_as_np / 255
-
-        label_as_np = torch.from_numpy(label_as_np).long()
-        return image_as_tensor, label_as_np, original_label, np.array(img_shape), name
+        return image_as_tensor, np.array(img_shape), name
 
 if __name__ == '__main__':
     dst = targetDataSet("./data", is_transform=True)

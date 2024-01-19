@@ -1,5 +1,5 @@
 import os
-
+import torch
 from model.advanced_model import *
 from metrics import *
 from pre_processing import *
@@ -50,12 +50,9 @@ def test_model(model, valloader, save_dir,i_iter,gpu,usecuda,test_aug):
     if usecuda:
         model.cuda(gpu)
     model.eval()
-    total_dice = 0
-    total_jac = 0
     count = 0
     pred_total = np.array([])
-    original_msk_total = np.array([])
-    for i_pic, (images_v, masks_v, original_msk,_,name)in enumerate(valloader):
+    for i_pic, (images_v, _,name)in enumerate(valloader):
         if usecuda:
             stacked_img = torch.Tensor([]).cuda(gpu)
         else:
@@ -77,33 +74,15 @@ def test_model(model, valloader, save_dir,i_iter,gpu,usecuda,test_aug):
                         torch.cuda.empty_cache()
                 else:
                     raise e
-        pred, original_msk = save_prediction_image(stacked_img, name,i_iter,save_dir,original_msk)
+        pred, _ = save_prediction_image(stacked_img, name,i_iter,save_dir, torch.Size([768, 1024]))
         dim = pred.shape
 
-        dice, jac = dice_coeff(pred, original_msk)
-        count = count + 1
-
-        total_dice = total_dice + dice
-        total_jac = total_jac + jac
-        #
-        print("%d.  val_jac is:%f . val_dice is:%f " % (i_pic, jac, dice))
-
-        pred_total = np.append(pred_total, pred)
-        original_msk_total = np.append(original_msk_total, original_msk)
-
-    D3_dice, D3_jac = dice_coeff(pred_total, original_msk_total)
-    D2_dice = total_dice / count
-    D2_jac = total_jac / count
-    print('3D dice: %4f' % D3_dice, '3D jac: %4f' % D3_jac,
-          '2D dice: %4f' % D2_dice, '2D jac: %4f' % D2_jac)
-
     pred_total = pred_total.reshape(count, dim[0], dim[1])
-    original_msk_total = original_msk_total.reshape(count, dim[0], dim[1])
 
-    return pred_total, original_msk_total
+    return pred_total, 0
 
 
-def save_prediction_image(stacked_img, im_name, iter, save_folder_name, original_msk):
+def save_prediction_image(stacked_img, im_name, iter, save_folder_name, msk_shape):
     """save images to save_path
     Args:
         stacked_img (numpy): stacked cropped images
@@ -118,9 +97,9 @@ def save_prediction_image(stacked_img, im_name, iter, save_folder_name, original
     """
     crop_size = stacked_img[0].size()
 
-    maxsize = original_msk.shape[1:]
+    maxsize = msk_shape
 
-    output_shape = original_msk.shape[1:]
+    output_shape = msk_shape
     crop_n1 = math.ceil(output_shape[0] / crop_size[0])
     crop_n2 = math.ceil(output_shape[1] / crop_size[1])
     if crop_n1 == 1:
@@ -147,7 +126,7 @@ def save_prediction_image(stacked_img, im_name, iter, save_folder_name, original
     # Save Image!
     export_name = str(im_name) + '.png'
     img_cont.save(desired_path + export_name)
-    return img_cont_np, original_msk
+    return img_cont_np, msk_shape
 
 
 def polarize(img):

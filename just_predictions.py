@@ -22,9 +22,10 @@ def test_augmentation2(testmodel, pred_ori, input_size_target, args, usecuda):
                           test_aug, crop_size=input_size_target),
         batch_size=1, shuffle=False)
 
+    print("before test_model")
     pred_total, _ = test_model(testmodel, testloader, args.save_dir, test_aug, args.gpu, usecuda,
                                                     test_aug)
-
+    print("after test_model")
     pred_total = postpre(pred_total, args.save_dir, test_aug)
     return pred_final
 

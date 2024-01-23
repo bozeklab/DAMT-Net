@@ -349,7 +349,7 @@ def main():
                 targetDataSet_test(args.data_dir_test, args.data_list_test,
                                    0, crop_size=input_size_target),
                 batch_size=1, shuffle=False)
-            test_model(model, testloader, args.save_dir, i_iter, args.gpu, usecuda, 0)
+            test_model(model.get_target_segmentation_net(), testloader, args.save_dir, i_iter, args.gpu, usecuda, 0)
             #dice, jac = validate_model(model.get_target_segmentation_net(), valloader, './val/cvlab', i_iter,
             #                            args.gpu,usecuda)
             # # print('val dice: %4f' % dice, 'val jac: %4f' % jac)

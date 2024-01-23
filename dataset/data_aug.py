@@ -22,12 +22,10 @@ def create_transformer(transformations, images):
     target = {}
     for i, image in enumerate(images[1:]):
         target['image' + str(i)] = 'image'
-    return albu.Compose(transformations, p=0.5, additional_targets=target)(image=images[0],
-                                                                           mask=images[1]
-                                                                           )
+    return albu.Compose(transformations, p=0.5, additional_targets=target)(image=images[0])
 
 
-def aug_img_lab(img, lab, cropsize, p=0.5):
-    images = [img, lab]
+def aug_img_lab(img, cropsize, p=0.5):
+    images = [img]
     transformed = create_transformer(strong_aug(p=p, cropsize=cropsize), images)
-    return transformed['image'], transformed['mask']
+    return transformed['image']

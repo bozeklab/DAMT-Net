@@ -50,7 +50,7 @@ class targetDataSet(data.Dataset):
 
         # data augmentation
         image = normalization2(image, max=1, min=0)
-        image_as_np, label_as_np = aug_img_lab(image, label, self.crop_size)
+        image_as_np = aug_img_lab(image, self.crop_size)
         #label_as_np = approximate_image(label_as_np)
 
         # cropping the data with the input size

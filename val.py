@@ -74,7 +74,6 @@ def test_model(model, valloader, save_dir,i_iter,gpu,usecuda,test_aug):
                         torch.cuda.empty_cache()
                 else:
                     raise e
-        print("before save_pred")
         pred, _ = save_prediction_image(stacked_img, name,i_iter,save_dir, torch.Size([768, 1024]))
         dim = pred.shape
 

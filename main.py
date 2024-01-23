@@ -15,10 +15,10 @@ from model.discriminator import labelDiscriminator, featureDiscriminator
 from dataset.source_dataset import sourceDataSet
 from dataset.target_dataset import targetDataSet,targetDataSet_val
 from utils.loss import CrossEntropy2d,MSELoss
-from val import validate_model
+from val import save_prediction_image, test_model
 import re
 from add_arguments import get_arguments
-
+from dataset.target_dataset import targetDataSet_test
 
 class Logger(object):
     def __init__(self, filename='logprocess.log', stream=sys.stdout):
@@ -345,7 +345,12 @@ def main():
                 ))
 
         if i_iter % args.save_pred_every == 0:
-            # dice, jac = validate_model(model.get_target_segmentation_net(), valloader, './val/cvlab', i_iter,
+            testloader = data.DataLoader(
+                targetDataSet_test(args.data_dir_test, args.data_list_test,
+                                   0, crop_size=input_size_target),
+                batch_size=1, shuffle=False)
+            test_model(model, testloader, args.save_dir, i_iter, args.gpu, usecuda, 0)
+            #dice, jac = validate_model(model.get_target_segmentation_net(), valloader, './val/cvlab', i_iter,
             #                            args.gpu,usecuda)
             # # print('val dice: %4f' % dice, 'val jac: %4f' % jac)
             # if jac > args.best_tjac:

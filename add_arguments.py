@@ -35,7 +35,7 @@ D1RESTORE_FROM = ''
 D2RESTORE_FROM = ''
 
 NUM_CLASSES = 2
-NUM_STEPS = 10
+NUM_STEPS = 1000
 
 # auto-encoder
 LEARNING_RATE = 0.00005
@@ -50,7 +50,7 @@ LEARNING_RATE_Df = 0.0001
 STEP_SIZE_Df = 3000
 
 SAVE_NUM_IMAGES = 2
-SAVE_PRED_EVERY = 5
+SAVE_PRED_EVERY = 300
 SNAPSHOT_DIR = './snapshots/'
 SAVE_DIR = './testResult/'
 TEST_MODEL_PATH = '/projects/ag-bozek/psotnicz/DAMT-Net/Pretrained_model/model_final_iii_vnc_to_mouse_brain1.pth'

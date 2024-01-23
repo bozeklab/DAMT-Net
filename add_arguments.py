@@ -25,7 +25,7 @@ DATA_LIST_PATH_VAL = './dataset/cvlabdata_list/val.txt'
 # target validation
 DATA_DIRECTORY_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data'
 DATA_DIRECTORY_TEST_LABEL = '/projects/ag-bozek/psotnicz/DAMT-Net/data/ground_truth'
-DATA_LIST_PATH_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list.txt'
+DATA_LIST_PATH_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list_test_t.txt'
 
 # model setting
 ITER_START = 0

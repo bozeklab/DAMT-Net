@@ -64,7 +64,7 @@ def test_model(model, valloader, save_dir,i_iter,gpu,usecuda,test_aug):
                 else:
                     image_v = Variable(images_v[:, index, :, :].unsqueeze(0))
             try:
-                _, output = model(image_v)
+                output = model(image_v)
                 output = torch.argmax(output, dim=1).float()
                 stacked_img = torch.cat((stacked_img, output))
             except RuntimeError as e:

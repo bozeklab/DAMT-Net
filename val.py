@@ -65,7 +65,7 @@ def test_model(model, valloader, save_dir,i_iter,gpu,usecuda,test_aug):
                     image_v = Variable(images_v[:, index, :, :].unsqueeze(0))
             try:
                 output = model(image_v)
-                output = torch.argmax(output, dim=1).float()
+                output = torch.argmax(output[1], dim=1).float()
                 stacked_img = torch.cat((stacked_img, output))
             except RuntimeError as e:
                 if 'out of memory' in str(e):

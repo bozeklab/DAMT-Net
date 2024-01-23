@@ -333,7 +333,7 @@ def main():
             scheduler_feature.step(epoch=i_iter)
             args.learning_rate_Df = scheduler_feature.get_lr()[0]
 
-        if (i_iter % 50 == 0):
+        if (i_iter % 100 == 0):
             print('time = {0},lr = {1: 5f},lr_Dl = {2: 6f},lr_Df = {3: 6f}'.format(datetime.datetime.now(), args.learning_rate,
                                                                   args.learning_rate_Dl,args.learning_rate_Df))
             print(

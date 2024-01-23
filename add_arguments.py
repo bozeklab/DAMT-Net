@@ -25,7 +25,7 @@ DATA_LIST_PATH_VAL = './dataset/cvlabdata_list/val.txt'
 # target validation
 DATA_DIRECTORY_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data'
 DATA_DIRECTORY_TEST_LABEL = '/projects/ag-bozek/psotnicz/DAMT-Net/data/ground_truth'
-DATA_LIST_PATH_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list_test_t.txt'
+DATA_LIST_PATH_TEST = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list_t.txt'
 
 # model setting
 ITER_START = 0
@@ -35,7 +35,7 @@ D1RESTORE_FROM = ''
 D2RESTORE_FROM = ''
 
 NUM_CLASSES = 2
-NUM_STEPS = 1000
+NUM_STEPS = 10000
 
 # auto-encoder
 LEARNING_RATE = 0.00005
@@ -50,7 +50,7 @@ LEARNING_RATE_Df = 0.0001
 STEP_SIZE_Df = 3000
 
 SAVE_NUM_IMAGES = 2
-SAVE_PRED_EVERY = 300
+SAVE_PRED_EVERY = 500
 SNAPSHOT_DIR = './snapshots/'
 SAVE_DIR = './testResult/'
 TEST_MODEL_PATH = '/projects/ag-bozek/psotnicz/DAMT-Net/Pretrained_model/model_final_iii_vnc_to_mouse_brain1.pth'

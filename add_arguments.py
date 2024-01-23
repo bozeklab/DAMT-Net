@@ -3,19 +3,19 @@ import argparse
 MODEL = 'AE'
 BATCH_SIZE = 1
 NUM_WORKERS = 4
-GPU = 1
+GPU = 3
 
 # source data
 INPUT_SIZE = '512,512'
-DATA_DIRECTORY_IMG = '../data/orivncdata/img/'
-DATA_DIRECTORY_LABEL = '../data/orivncdata/lab/'
-DATA_LIST_PATH = './dataset/vncdata_list/train.txt'
+DATA_DIRECTORY_IMG = '/projects/ag-bozek/psotnicz/DAMT-Net/data/droso/raw'
+DATA_DIRECTORY_LABEL = '/projects/ag-bozek/psotnicz/DAMT-Net/data/droso/mitochondria'
+DATA_LIST_PATH = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list.txt'
 
 # target data
 INPUT_SIZE_TARGET = '512,512'
-DATA_DIRECTORY_TARGET = '../data/cvlabdata/train/img/'
+DATA_DIRECTORY_TARGET = '/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data'
 DATA_DIRECTORY_TARGET_LABEL = '../data/cvlabdata/train/lab/'
-DATA_LIST_PATH_TARGET = './dataset/cvlabdata_list/train.txt'
+DATA_LIST_PATH_TARGET = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list_t.txt'
 
 # target validation
 DATA_DIRECTORY_VAL = '../data/cvlabdata/val/img/'
@@ -35,7 +35,7 @@ D1RESTORE_FROM = ''
 D2RESTORE_FROM = ''
 
 NUM_CLASSES = 2
-NUM_STEPS = 100000
+NUM_STEPS = 10
 
 # auto-encoder
 LEARNING_RATE = 0.00005
@@ -50,7 +50,7 @@ LEARNING_RATE_Df = 0.0001
 STEP_SIZE_Df = 3000
 
 SAVE_NUM_IMAGES = 2
-SAVE_PRED_EVERY = 300
+SAVE_PRED_EVERY = 5
 SNAPSHOT_DIR = './snapshots/'
 SAVE_DIR = './testResult/'
 TEST_MODEL_PATH = '/projects/ag-bozek/psotnicz/DAMT-Net/Pretrained_model/model_final_iii_vnc_to_mouse_brain1.pth'

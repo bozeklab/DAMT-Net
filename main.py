@@ -345,25 +345,25 @@ def main():
                 ))
 
         if i_iter % args.save_pred_every == 0:
-            dice, jac = validate_model(model.get_target_segmentation_net(), valloader, './val/cvlab', i_iter,
-                                       args.gpu,usecuda)
-            print('val dice: %4f' % dice, 'val jac: %4f' % jac)
-            if jac > args.best_tjac:
-                args.best_tjac = jac
-                print('best val dice: %4f' % dice, 'best val jac: %f' % jac)
-                torch.save(model.state_dict(),
-                           osp.join(args.snapshot_dir, 'CVbest' + str(i_iter) + '_' + str(jac) + '.pth'))
-                torch.save(model_label.state_dict(),
-                           osp.join(args.snapshot_dir, 'CVbest' + str(i_iter) + '_' + str(jac) + '_D.pth'))
-                torch.save(model_feature.state_dict(),
-                           osp.join(args.snapshot_dir, 'CVbest' + str(i_iter) + '_' + str(jac) + '_D2.pth'))
-
-            else:
-                torch.save(model.state_dict(), osp.join(args.snapshot_dir, 'CV_' + str(i_iter) + '.pth'))
-                torch.save(model_label.state_dict(),
-                               osp.join(args.snapshot_dir, 'CV_' + str(i_iter) + '_D.pth'))
-                torch.save(model_feature.state_dict(),
-                               osp.join(args.snapshot_dir, 'CV_' + str(i_iter) + '_D2.pth'))
+            # dice, jac = validate_model(model.get_target_segmentation_net(), valloader, './val/cvlab', i_iter,
+            #                            args.gpu,usecuda)
+            # # print('val dice: %4f' % dice, 'val jac: %4f' % jac)
+            # if jac > args.best_tjac:
+            #     args.best_tjac = jac
+            #     print('best val dice: %4f' % dice, 'best val jac: %f' % jac)
+            #     torch.save(model.state_dict(),
+            #                osp.join(args.snapshot_dir, 'CVbest' + str(i_iter) + '_' + str(jac) + '.pth'))
+            #     torch.save(model_label.state_dict(),
+            #                osp.join(args.snapshot_dir, 'CVbest' + str(i_iter) + '_' + str(jac) + '_D.pth'))
+            #     torch.save(model_feature.state_dict(),
+            #                osp.join(args.snapshot_dir, 'CVbest' + str(i_iter) + '_' + str(jac) + '_D2.pth'))
+            #
+            # else:
+            torch.save(model.state_dict(), osp.join(args.snapshot_dir, 'CV_' + str(i_iter) + '.pth'))
+            torch.save(model_label.state_dict(),
+                           osp.join(args.snapshot_dir, 'CV_' + str(i_iter) + '_D.pth'))
+            torch.save(model_feature.state_dict(),
+                           osp.join(args.snapshot_dir, 'CV_' + str(i_iter) + '_D2.pth'))
 
 
 

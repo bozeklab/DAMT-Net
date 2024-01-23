@@ -61,7 +61,7 @@ def main():
     # makedatalist
     ml.makedatalist(args.data_dir_img, args.data_list)
     ml.makedatalist(args.data_dir_target, args.data_list_target)
-    ml.makedatalist(args.data_dir_val, args.data_list_val)
+    #ml.makedatalist(args.data_dir_val, args.data_list_val)
 
     # setting logging directory
     if not os.path.exists(args.snapshot_dir):
@@ -91,10 +91,10 @@ def main():
 
     targetloader_iter = enumerate(targetloader)
 
-    valloader = data.DataLoader(
-        targetDataSet_val(args.data_dir_val, args.data_dir_val_label, args.data_list_val,
-                           crop_size=input_size_target),
-        batch_size=1, shuffle=False)
+    # valloader = data.DataLoader(
+    #     targetDataSet_val(args.data_dir_val, args.data_dir_val_label, args.data_list_val,
+    #                        crop_size=input_size_target),
+    #     batch_size=1, shuffle=False)
 
     """
         build the network

@@ -13,7 +13,7 @@ DATA_LIST_PATH = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list.txt'
 
 # target data
 INPUT_SIZE_TARGET = '512,512'
-DATA_DIRECTORY_TARGET = '/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data'
+DATA_DIRECTORY_TARGET = '/projects/ag-bozek/psotnicz/DAMT-Net/data/our_data'
 DATA_DIRECTORY_TARGET_LABEL = '../data/cvlabdata/train/lab/'
 DATA_LIST_PATH_TARGET = '/projects/ag-bozek/psotnicz/DAMT-Net/data/path_list_t.txt'
 

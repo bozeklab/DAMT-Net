@@ -10,7 +10,7 @@ import torchvision
 from torch.utils import data
 from PIL import Image
 from pre_processing import *
-from dataset.data_aug import aug_img_lab
+from dataset.data_aug import aug_img
 import math
 
 class targetDataSet(data.Dataset):
@@ -50,7 +50,7 @@ class targetDataSet(data.Dataset):
 
         # data augmentation
         image = normalization2(image, max=1, min=0)
-        image_as_np = aug_img_lab(image, self.crop_size)
+        image_as_np = aug_img(image, self.crop_size)
         #label_as_np = approximate_image(label_as_np)
 
         # cropping the data with the input size

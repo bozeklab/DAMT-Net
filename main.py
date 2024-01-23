@@ -85,7 +85,7 @@ def main():
     trainloader_iter = enumerate(trainloader)
 
     targetloader = data.DataLoader(
-        targetDataSet(args.data_dir_target, args.data_dir_target_label, args.data_list_target,
+        targetDataSet(args.data_dir_target, args.data_list_target,
                       max_iters=args.num_steps, crop_size=input_size_target),
         batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers)
 
@@ -221,7 +221,7 @@ def main():
         sdice, sjac = dice_coeff(label.cpu(), labels.cpu())
 
         _, batch = targetloader_iter.__next__()
-        images, tlabels, _, _ = batch
+        images, _, _ = batch
         if usecuda:
             images_target = Variable(images).cuda(args.gpu)
         else:
